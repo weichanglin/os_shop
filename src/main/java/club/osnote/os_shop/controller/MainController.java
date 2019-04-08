@@ -15,10 +15,9 @@ public class MainController {
     @Autowired
     Logger logger;
 
-    @ResponseBody
     @RequestMapping("/")
     public String index(){
-        logger.info("hello,测试日志=======");
-        return testService.sayhello("zhang");
+
+        return "/index";
     }
 }
