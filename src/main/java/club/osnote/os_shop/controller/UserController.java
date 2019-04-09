@@ -1,6 +1,7 @@
 package club.osnote.os_shop.controller;
 
 import club.osnote.os_shop.dao.UserDao;
+import club.osnote.os_shop.dao.UserMapper;
 import club.osnote.os_shop.jwt.JwtUtils;
 import club.osnote.os_shop.jwt.NeedLoginAnno;
 import club.osnote.os_shop.utils.Constants;
@@ -18,6 +19,8 @@ public class UserController {
 
     @Autowired
     HttpServletRequest httpServletRequest;
+    @Autowired
+    UserMapper userMapper;
 
 
     @ResponseBody
@@ -48,5 +51,12 @@ public class UserController {
     @GetMapping("/login")
     public String index() {
         return "/user/login";
+    }
+
+    @ResponseBody
+    @GetMapping("/test")
+    public Object index2(@RequestParam("id") Long Id) {
+
+        return userMapper.selectByPrimaryKey(Id);
     }
 }
